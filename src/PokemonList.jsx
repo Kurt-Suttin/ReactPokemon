@@ -8,11 +8,13 @@ const PokemonList = () => {
     const [selectedPokemon, setSelectedPokemon] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [loading, setLoading] = useState(true); // Add loading state
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${(currentPage - 1) * 9}&limit=9`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=999`);
                 const results = response.data.results;
 
                 const pokemonWithImages = await Promise.all(
@@ -26,14 +28,19 @@ const PokemonList = () => {
                 );
 
                 setPokemonList(pokemonWithImages);
-                setTotalPages(Math.ceil(response.data.count / 9));
+                setTotalPages(Math.ceil(pokemonWithImages.length / 9));
+                setLoading(false); // Set loading to false after fetching data
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
-    }, [currentPage]);
+    }, []);
+
+    useEffect(() => {
+        setTotalPages(Math.ceil(pokemonList.length / 9));
+    }, [pokemonList]);
 
     const openModal = (pokemon) => {
         setSelectedPokemon(pokemon);
@@ -55,26 +62,49 @@ const PokemonList = () => {
         }
     };
 
+    const firstPage = () => {
+        setCurrentPage(1);
+    };
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+        setCurrentPage(1); // Reset to the first page when a new search query is entered
+    };
+
+    const filteredPokemonList = pokemonList.filter(pokemon =>
+        pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    const paginatedPokemonList = filteredPokemonList.slice((currentPage - 1) * 9, currentPage * 9);
+
     return (
         <>
             <div className={"background"}>
                 <div className={"pokemon-list"}>
                     <div className={"text-align-center"}>
                         <h1>Pokemon List</h1>
+                        <input type="text" value={searchQuery} onChange={handleSearch} placeholder="Search Pokémon by name" className={"search-bar"}/>
                     </div>
-                    <div className="grid-container">
-                        {pokemonList.map(pokemon => (
-                            <div key={pokemon.name} className={"pokemon-card"} onClick={() => openModal(pokemon)}>
-                                <img className={"pokemon-img"} src={pokemon.image} alt={pokemon.name}/>
-                                <p className={"pokemon-name"}>{pokemon.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="pagination">
-                        <p className={"page-number"}>{currentPage}</p>
-                        <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
-                        <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
-                    </div>
+                    {loading ? ( // Check loading state
+                        <div className="loading-message">Loading Pokémon data...</div>
+                    ) : (
+                        <div className="grid-container">
+                            {paginatedPokemonList.map(pokemon => (
+                                <div key={pokemon.name} className={"pokemon-card"} onClick={() => openModal(pokemon)}>
+                                    <img className={"pokemon-img"} src={pokemon.image} alt={pokemon.name}/>
+                                    <p className={"pokemon-name"}>{pokemon.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {searchQuery === '' && (
+                        <div className="pagination">
+                            <p className={"page-number"}>{currentPage}</p>
+                            <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
+                            <button onClick={firstPage} disabled={currentPage === 1}>First Page</button>
+                            <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
+                        </div>
+                    )}
                 </div>
             </div>
             {selectedPokemon && (
