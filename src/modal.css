@@ -1,0 +1,47 @@
+/* styles.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    z-index: 1; /* Ensure the modal is on top */
+}
+
+.modal-content {
+    font-size: 4em;
+}
+.modal-pokemon-image{
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #aaa;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
