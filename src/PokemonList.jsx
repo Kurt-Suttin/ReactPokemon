@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import PokemonModal from './PokemonModal'; // Import the modal component
 import './index.css';
@@ -16,13 +16,19 @@ const PokemonList = () => {
             try {
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=999`);
                 const results = response.data.results;
-
                 const pokemonWithImages = await Promise.all(
                     results.map(async pokemon => {
                         const pokemonDetailsResponse = await axios.get(pokemon.url);
+                        const id = pokemonDetailsResponse.data.id; // Extract ID from Pokémon details
+                        const moves = pokemonDetailsResponse.data.moves.map(move => move.move.name); // Extract moves
+                        const abilities = pokemonDetailsResponse.data.abilities.map(ability => ability.ability.name);
+
                         return {
+                            id: id,
                             name: pokemon.name,
                             image: pokemonDetailsResponse.data.sprites.front_default,
+                            abilities: abilities,
+                            moves: moves // Include moves in the Pokémon data
                         };
                     })
                 );
@@ -83,7 +89,8 @@ const PokemonList = () => {
                 <div className={"pokemon-list"}>
                     <div className={"text-align-center"}>
                         <h1>Pokemon List</h1>
-                        <input type="text" value={searchQuery} onChange={handleSearch} placeholder="Search Pokémon by name" className={"search-bar"}/>
+                        <input type="text" value={searchQuery} onChange={handleSearch}
+                               placeholder="Search Pokémon by name" className={"search-bar"}/>
                     </div>
                     {loading ? ( // Check loading state
                         <div className="loading-message">Loading Pokémon data...</div>
