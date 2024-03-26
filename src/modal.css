@@ -15,26 +15,41 @@
     width: 300px; /* Set your desired width */
     height: 400px; /* Set your desired height */
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(222, 222, 222, 0.73);
     border-radius: 8px;
     overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
 }
 
 .modal-pokemon-image {
-    width: 100%;
+    width: 80%;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
 }
 
 .modal-name {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.movesList{
+    padding: 8px;
+    font-size: large;
+    cursor: pointer;
+}
+.table-container table {
+    border-collapse: separate;
+    border-spacing: 8px; /* Adjust this value to set the desired spacing */
+}
+
+.table-container th,
+.table-container td {
+    padding: 5px; /* Optional: Adjust padding as needed */
 }
 
 .modal {
-    background-color: #fff;
+    background-color: #dda0dd;
     border-radius: 8px;
-    padding: 20px;
+    padding: 18px;
     position: relative;
     z-index: 1; /* Ensure the modal is on top */
 }

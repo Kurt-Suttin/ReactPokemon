@@ -32,6 +32,16 @@ const PokemonModal = ({ pokemon, onClose }) => {
         }
     };
 
+    let moveNames = [];
+    if (pokemonDetails) {
+        moveNames = pokemonDetails.moves.slice(0, 8).map(move => move.move.name);
+    }
+
+    // Divide the move names into two separate arrays for left and right columns
+    const midIndex = Math.ceil(moveNames.length / 2);
+    const leftMoves = moveNames.slice(0, midIndex);
+    const rightMoves = moveNames.slice(midIndex);
+
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal">
@@ -42,35 +52,28 @@ const PokemonModal = ({ pokemon, onClose }) => {
                     ) : (
                         <>
                             <h2 className={"modal-name"}>{pokemonDetails.name}</h2>
-                            <p>ID: {pokemon.id}</p>
+                            {/*<p>ID: {pokemon.id}</p>*/}
                             <img className={"modal-pokemon-image"} src={pokemon.image} alt={pokemon.name} />
+                            <h4>Moves:</h4>
                             <div className="table-container">
                                 <table>
-                                    <thead>
-                                    <tr>
-                                        <th>Move</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {pokemonDetails.moves.slice(0, 8).map((move, index) => (
+                                    <tbody className={"movesList"}>
+                                    {leftMoves.map((moveName, index) => (
                                         <tr key={index}>
-                                            <td>{move.move.name}</td>
+                                            <td className={"leftMoves"}>{moveName}</td>
+                                            <td className={"rightMoves"}>{rightMoves[index]}</td>
                                         </tr>
                                     ))}
                                     </tbody>
                                 </table>
                             </div>
+                            <h4>Abilities:</h4>
                             <div className="table-container">
                                 <table>
-                                    <thead>
-                                    <tr>
-                                        <th>Ability</th>
-                                    </tr>
-                                    </thead>
                                     <tbody>
                                     {pokemonDetails.abilities.map((ability, index) => (
                                         <tr key={index}>
-                                            <td>{ability.ability.name}</td>
+                                            <td className={"movesList"}>{ability.ability.name}</td>
                                         </tr>
                                     ))}
                                     </tbody>
