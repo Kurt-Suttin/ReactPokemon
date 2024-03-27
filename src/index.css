@@ -10,7 +10,9 @@
 .background{
     background: plum;
 }
-
+body{
+    background: plum;
+}
 /* index.css */
 
 
@@ -51,20 +53,20 @@ color: #2d2b2b;
 }
 .pagination button {
     margin: 0 5px;
-    background-color: hsl(264, 100%, 50%);
+    background-color: hsl(264, 83%, 77%);
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
-    border: 2px solid #ffffff;
+    border: 2px solid #ccc;
     cursor: pointer;
 }
 .pagination button:hover {
     margin: 0 5px;
-    background-color: hsl(0, 2%, 79%);
-    color: #170606;
+    background-color: hsl(264, 83%, 60%);
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 10px;
-    border: 2px solid #ffffff;
+    border: 2px solid #ccc;
     cursor: pointer;
 }
 
