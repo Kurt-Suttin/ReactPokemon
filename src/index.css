@@ -1,18 +1,20 @@
-
 /*///////////*/
-.text-align-center{
+.text-align-center {
     text-align: center;
 }
 
-.pokemon-img{
+.pokemon-img {
     width: 10%;
 }
-.background{
+
+.background {
     background: plum;
 }
-body{
+
+body {
     background: plum;
 }
+
 /* index.css */
 
 
@@ -48,23 +50,26 @@ body{
     margin-top: 20px;
     text-align: center;
 }
-.page-nuber{
-color: #2d2b2b;
+
+.page-nuber {
+    color: #2d2b2b;
 }
+
 .pagination button {
     margin: 0 5px;
     background-color: hsl(264, 83%, 77%);
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 10px;
     border: 2px solid #ccc;
     cursor: pointer;
 }
+
 .pagination button:hover {
     margin: 0 5px;
     background-color: hsl(264, 83%, 60%);
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 10px;
     border: 2px solid #ccc;
     cursor: pointer;

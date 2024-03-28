@@ -61,10 +61,20 @@ const PokemonList = () => {
             setCurrentPage(currentPage + 1);
         }
     };
+    const nextPageTen = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 10);
+        }
+    };
 
     const prevPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
+        }
+    };
+    const prevPageTen = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 10);
         }
     };
 
@@ -107,9 +117,11 @@ const PokemonList = () => {
                     {searchQuery === '' && (
                         <div className="pagination">
                             <p className={"page-number"}>{currentPage}</p>
+                            <button onClick={prevPageTen} disabled={currentPage === 1}>Previous 10</button>
                             <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
                             <button onClick={firstPage} disabled={currentPage === 1}>First Page</button>
                             <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
+                            <button onClick={nextPageTen} disabled={currentPage === totalPages}>Next 10</button>
                         </div>
                     )}
                 </div>
