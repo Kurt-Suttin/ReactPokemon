@@ -39,6 +39,9 @@ body {
 .pokemon-card:hover {
     background-color: #e0e0e0;
 }
+.pokemon-card:hover .pokemon-img {
+    transform: translateY(-10px); /* Move the image up by pixels */
+}
 
 .pokemon-img {
     width: 100px;

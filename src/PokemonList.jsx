@@ -16,13 +16,13 @@ const PokemonList = () => {
             try {
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=999`);
                 const results = response.data.results;
+                console.log(response)
                 const pokemonWithImages = await Promise.all(
                     results.map(async pokemon => {
                         const pokemonDetailsResponse = await axios.get(pokemon.url);
                         const id = pokemonDetailsResponse.data.id; // Extract ID from Pokémon details
                         const moves = pokemonDetailsResponse.data.moves.map(move => move.move.name); // Extract moves
                         const abilities = pokemonDetailsResponse.data.abilities.map(ability => ability.ability.name);
-
                         return {
                             id: id,
                             name: pokemon.name,

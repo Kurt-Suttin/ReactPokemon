@@ -24,6 +24,24 @@
     width: 80%;
     height: auto;
     margin-bottom: 1px;
+    cursor: pointer;
+    overlay: none;
+}
+
+@keyframes rotateHorizontal {
+    0% {
+        transform: rotateY(0deg); /* Start with no rotation */
+    }
+    100% {
+        transform: rotateY(360deg); /* Rotate horizontally by 180 degrees */
+    }
+}
+
+.modal-pokemon-image:hover{
+    transform: translateY(-10px); /* Move the image up by pixels */
+    animation: rotateHorizontal 1.5s ease-in-out forwards; /* Apply the animation on hover */
+    overlay: none;
+
 }
 
 .modal-name {
