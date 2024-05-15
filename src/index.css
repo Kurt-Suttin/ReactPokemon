@@ -20,6 +20,8 @@ body {
 
 .page-number {
     color: #ffffff;
+    position: absolute;
+    height: 5em;
 }
 .pokemon-list {
     max-width: 800px;
@@ -55,7 +57,7 @@ body {
     height: 100px;
     margin: 0 auto;
 }
-
+/*  Pagination CSS  */
 .pagination {
     position: fixed;
     bottom: 5vh;
@@ -63,7 +65,10 @@ body {
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
-    z-index: 1000; /* Ensure it's on top of other elements */
+    z-index: 1000;
+    display: flex; /* Ensure flex layout for button alignment */
+    justify-content: center; /* Center align buttons horizontally */
+    align-items: center; /* Center align buttons vertically */
 }
 
 .pagination button {
@@ -74,12 +79,73 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    opacity: 0;
 }
 
 .pagination button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+/* Keyframes for sliding in */
+@keyframes slideInPagination {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Move downwards */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Move back to original position */
+    }
+}
+
+/* Additional animations for specific buttons */
+.pagination button:nth-child(1), .pagination button:nth-child(2) {
+    animation: slideInLeft 0.5s forwards;
+}
+
+.pagination button:nth-child(4), .pagination button:nth-child(5) {
+    animation: slideInRight 0.5s forwards;
+}
+
+.pagination button:nth-child(3) {
+    animation: slideInUp 0.5s forwards;
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px); /* Move to the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Move back to original position */
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px); /* Move to the right */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Move back to original position */
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Move downwards */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Move back to original position */
+    }
+}
+
+/*end of pagination css */
 
 
 .search-bar, .pokeDex {
