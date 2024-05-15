@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './modal.css';
 
-const PokemonModal = ({ pokemon, onClose }) => {
+const PokemonModal = ({pokemon, onClose}) => {
     const [pokemonDetails, setPokemonDetails] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -52,10 +52,11 @@ const PokemonModal = ({ pokemon, onClose }) => {
                     ) : (
                         <>
                             <h2 className={"modal-name"}>{pokemonDetails.name}</h2>
-                            {/*<p>ID: {pokemon.id}</p>*/}
-                            <img className={"modal-pokemon-image"} src={pokemon.image} alt={pokemon.name} />
-                            <h4>Moves:</h4>
+                            <img className={"modal-pokemon-image"} src={pokemon.image} alt={pokemon.name}/>
                             <div className="table-container">
+                                <h4 className={"modal-types"}>Type: {pokemonDetails.types.map(type => type.type.name).join(', ')}</h4>
+                                <h4>Moves:</h4>
+
                                 <table>
                                     <tbody className={"movesList"}>
                                     {leftMoves.map((moveName, index) => (

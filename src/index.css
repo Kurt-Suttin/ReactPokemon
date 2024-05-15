@@ -18,10 +18,13 @@ body {
 
 /* index.css */
 
-
+.page-number {
+    color: #ffffff;
+}
 .pokemon-list {
     max-width: 800px;
     margin: 0 auto;
+    padding-top: 20vh;
 }
 
 .grid-container {
@@ -35,10 +38,12 @@ body {
     padding: 10px;
     cursor: pointer;
     text-align: center;
+    border-radius: 5%;
 }
 
 .pokemon-card:hover {
     background-color: #e0e0e0;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.6);
 }
 
 .pokemon-card:hover .pokemon-img {
@@ -52,32 +57,35 @@ body {
 }
 
 .pagination {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     text-align: center;
-}
-
-.page-number {
-    color: #ffffff;
+    z-index: 1000; /* Ensure it's on top of other elements */
 }
 
 .pagination button {
     margin: 0 5px;
-    background-color: hsl(264, 83%, 77%);
-    color: white;
     padding: 5px 10px;
-    border-radius: 10px;
-    border: 2px solid #ccc;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.pagination button:hover {
-    margin: 0 5px;
-    background-color: hsl(264, 83%, 60%);
-    color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 2px solid #ccc;
-    cursor: pointer;
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+.search-bar, .pokeDex {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .search-bar {
@@ -88,9 +96,32 @@ body {
     outline: none;
     font-size: 16px;
     margin-bottom: 50px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    top: 3%; /* Adjusted spacing from the top */
+    animation: slideInSearchBar 0.5s forwards; /* Unique animation name for search bar */
 }
 
 .pokeDex {
+    padding-bottom: 50px;
     color: white;
+    top: -100px; /* initially above the screen view */
+    animation: slideInPokeDex 0.5s forwards; /* Unique animation name for PokeDex */
 }
 
+@keyframes slideInSearchBar {
+    0% {
+        top: -100px; /* initial position */
+    }
+    100% {
+        top: 10vh; /* final position (20% from the top of the viewport) */
+    }
+}
+
+@keyframes slideInPokeDex {
+    0% {
+        top: -100px; /* initial position */
+    }
+    100% {
+        top: 1vh; /* final position (20% from the top of the viewport) */
+    }
+}

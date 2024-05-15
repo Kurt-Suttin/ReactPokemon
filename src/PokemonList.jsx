@@ -23,12 +23,14 @@ const PokemonList = () => {
                         const id = pokemonDetailsResponse.data.id; // Extract ID from Pokémon details
                         const moves = pokemonDetailsResponse.data.moves.map(move => move.move.name); // Extract moves
                         const abilities = pokemonDetailsResponse.data.abilities.map(ability => ability.ability.name);
+                        const types = pokemonDetailsResponse.data.types.map(type => type.type.name); // Extract types
                         return {
                             id: id,
                             name: pokemon.name,
                             image: pokemonDetailsResponse.data.sprites.front_default,
                             abilities: abilities,
-                            moves: moves // Include moves in the Pokémon data
+                            moves: moves,
+                            types: types,
                         };
                     })
                 );
@@ -99,8 +101,13 @@ const PokemonList = () => {
                 <div className={"pokemon-list"}>
                     <div className={"text-align-center"}>
                         <h1 className={"pokeDex"}>PokeDex </h1>
-                        <input type="text" value={searchQuery} onChange={handleSearch}
-                               placeholder="Search Pokémon by name" className={"search-bar"}/>
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={handleSearch}
+                            placeholder="Search Pokémon by name"
+                            className={"search-bar"}
+                        />
                     </div>
                     {loading ? ( // Check loading state
                         <div className="loading-message">Loading Pokémon data...</div>
@@ -114,16 +121,14 @@ const PokemonList = () => {
                             ))}
                         </div>
                     )}
-                    {searchQuery === '' && (
-                        <div className="pagination">
-                            <p className={"page-number"}>{currentPage}</p>
-                            <button onClick={prevPageTen} disabled={currentPage === 1}>Previous 10</button>
-                            <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
-                            <button onClick={firstPage} disabled={currentPage === 1}>First Page</button>
-                            <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
-                            <button onClick={nextPageTen} disabled={currentPage === totalPages}>Next 10</button>
-                        </div>
-                    )}
+                    <div className="pagination">
+                        <p className={"page-number"}>{currentPage}</p>
+                        <button onClick={prevPageTen} disabled={currentPage === 1}>Previous 10</button>
+                        <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
+                        <button onClick={firstPage} disabled={currentPage === 1}>1st Page</button>
+                        <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
+                        <button onClick={nextPageTen} disabled={currentPage === totalPages}>Next 10</button>
+                    </div>
                 </div>
             </div>
             {selectedPokemon && (
@@ -131,6 +136,7 @@ const PokemonList = () => {
             )}
         </>
     );
+
 };
 
 export default PokemonList;
