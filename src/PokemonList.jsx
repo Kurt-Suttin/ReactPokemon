@@ -98,7 +98,7 @@ const PokemonList = () => {
             <div className={"background"}>
                 <div className={"pokemon-list"}>
                     <div className={"text-align-center"}>
-                        <h1>Pokemon List</h1>
+                        <h1 className={"pokeDex"}>PokeDex </h1>
                         <input type="text" value={searchQuery} onChange={handleSearch}
                                placeholder="Search Pokémon by name" className={"search-bar"}/>
                     </div>

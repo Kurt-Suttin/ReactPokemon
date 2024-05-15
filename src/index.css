@@ -8,11 +8,24 @@
 }
 
 .background {
-    background: plum;
-}
+    background-image: linear-gradient(
+            180deg,
+            hsl(0deg 0% 0%) 0%,
+            hsl(299deg 26% 55%) 25%,
+            hsl(300deg 47% 75%) 50%,
+            hsl(299deg 26% 55%) 75%,
+            hsl(0deg 0% 0%) 100%
+    );}
 
 body {
-    background: plum;
+    background-image: linear-gradient(
+            180deg,
+            hsl(0deg 0% 0%) 0%,
+            hsl(299deg 26% 55%) 25%,
+            hsl(300deg 47% 75%) 50%,
+            hsl(299deg 26% 55%) 75%,
+            hsl(0deg 0% 0%) 100%
+    );
 }
 
 /* index.css */
@@ -30,7 +43,7 @@ body {
 }
 
 .pokemon-card {
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding: 10px;
     cursor: pointer;
     text-align: center;
@@ -54,8 +67,8 @@ body {
     text-align: center;
 }
 
-.page-nuber {
-    color: #2d2b2b;
+.page-number {
+    color: #ffffff;
 }
 
 .pagination button {
@@ -85,5 +98,10 @@ body {
     border-radius: 20px;
     outline: none;
     font-size: 16px;
+    margin-bottom: 50px;
+}
+
+.pokeDex{
+    color: white;
 }
 
