@@ -8,24 +8,12 @@
 }
 
 .background {
-    background-image: linear-gradient(
-            180deg,
-            hsl(0deg 0% 0%) 0%,
-            hsl(299deg 26% 55%) 25%,
-            hsl(300deg 47% 75%) 50%,
-            hsl(299deg 26% 55%) 75%,
-            hsl(0deg 0% 0%) 100%
-    );}
+    background: plum;
+}
 
 body {
-    background-image: linear-gradient(
-            180deg,
-            hsl(0deg 0% 0%) 0%,
-            hsl(299deg 26% 55%) 25%,
-            hsl(300deg 47% 75%) 50%,
-            hsl(299deg 26% 55%) 75%,
-            hsl(0deg 0% 0%) 100%
-    );
+    background: plum;
+
 }
 
 /* index.css */
@@ -52,6 +40,7 @@ body {
 .pokemon-card:hover {
     background-color: #e0e0e0;
 }
+
 .pokemon-card:hover .pokemon-img {
     transform: translateY(-10px); /* Move the image up by pixels */
 }
@@ -101,7 +90,7 @@ body {
     margin-bottom: 50px;
 }
 
-.pokeDex{
+.pokeDex {
     color: white;
 }
 
