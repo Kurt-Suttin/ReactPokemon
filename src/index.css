@@ -12,7 +12,7 @@
 }
 
 body {
-    background-color: #000000;
+    background-color: #be3333;
 
 }
 
@@ -194,4 +194,9 @@ body {
     100% {
         top: 1vh; /* final position (20% from the top of the viewport) */
     }
+}
+.loading-message{
+    color: white;
+    font-size: large;
+    animation: slideInLeft 1s forwards;
 }
