@@ -195,8 +195,124 @@ body {
         top: 1vh; /* final position (20% from the top of the viewport) */
     }
 }
-.loading-message{
-    color: white;
-    font-size: large;
-    animation: slideInLeft 1s forwards;
+/* loading data css */
+/*.loading-message{*/
+/*    color: white;*/
+/*    font-size: large;*/
+/*    animation: slideInLeft 1s forwards;*/
+/*}*/
+
+.loader {
+    width: 50%;
+    height: 100px;
+    position: absolute;
 }
+
+.loader-text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    margin: 0;
+    color: #ffffff;
+    animation: text_animation 3.5s ease both infinite;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.load {
+    background-color: #ffffff;
+    border-radius: 50px;
+    display: block;
+    height: 16px;
+    width: 16px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    animation: loading_animation 3.5s ease both infinite;
+}
+
+.load::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    border-radius: inherit;
+    animation: loading2_animation 3.5s ease both infinite;
+}
+
+@keyframes text_animation {
+    0% {
+        letter-spacing: 1px;
+        transform: translateX(-50%);
+    }
+
+    40% {
+        letter-spacing: 2px;
+        transform: translateX(-24px);
+    }
+
+    80% {
+        letter-spacing: 1px;
+        transform: translateX(0);
+    }
+
+    90% {
+        letter-spacing: 2px;
+        transform: translateX(0);
+    }
+
+    100% {
+        letter-spacing: 1px;
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes loading_animation {
+    0% {
+        width: 16px;
+    }
+
+    40% {
+        width: 100%;
+    }
+
+    80% {
+        width: 16px;
+    }
+
+    90% {
+        width: 100%;
+    }
+
+    100% {
+        width: 16px;
+    }
+}
+
+@keyframes loading2_animation {
+    0% {
+        width: 16px;
+    }
+
+    40% {
+        width: 80%;
+    }
+
+    80% {
+        width: 100%;
+    }
+
+    90% {
+        width: 80%;
+    }
+
+    100% {
+        width: 16px;
+    }
+}
+
+/* end of loading data css */

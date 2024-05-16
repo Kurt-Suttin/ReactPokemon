@@ -109,9 +109,14 @@ const PokemonList = () => {
                             className={"search-bar"}
                         />
                     </div>
-                    {loading ? ( // Check loading state
-                        <div className="loading-message">Loading Pokémon data...</div>
-                    ) : (
+                    {loading ? (
+                        <div className="loading-message">
+                            <div className="loader">
+                                <div className="loader-text">Loading Pokémon data...</div>
+                                <div className="load"></div>
+                            </div>
+                        </div>
+                    ): (
                         <div className="grid-container">
                             {paginatedPokemonList.map(pokemon => (
                                 <div key={pokemon.name} className={"pokemon-card"} onClick={() => openModal(pokemon)}>
