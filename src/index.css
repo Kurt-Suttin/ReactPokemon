@@ -8,11 +8,11 @@
 }
 
 .background {
-    background: plum;
+    background-color: #be3333;
 }
 
 body {
-    background: plum;
+    background-color: #000000;
 
 }
 
@@ -23,10 +23,12 @@ body {
     position: absolute;
     height: 5em;
 }
+
 .pokemon-list {
     max-width: 800px;
     margin: 0 auto;
     padding-top: 20vh;
+    padding-bottom: 20vh;
 }
 
 .grid-container {
@@ -41,6 +43,7 @@ body {
     cursor: pointer;
     text-align: center;
     border-radius: 5%;
+    background-color: #f8f7f7;
 }
 
 .pokemon-card:hover {
@@ -57,6 +60,7 @@ body {
     height: 100px;
     margin: 0 auto;
 }
+
 /*  Pagination CSS  */
 .pagination {
     position: fixed;
@@ -83,7 +87,7 @@ body {
 }
 
 .pagination button:disabled {
-    background-color: #ccc;
+    background-color: #f17777;
     cursor: not-allowed;
 }
 
@@ -101,21 +105,21 @@ body {
 
 /* Additional animations for specific buttons */
 .pagination button:nth-child(1), .pagination button:nth-child(2) {
-    animation: slideInLeft 1.5s forwards;
+    animation: slideInLeft 2s forwards;
 }
 
 .pagination button:nth-child(4), .pagination button:nth-child(5) {
-    animation: slideInRight 1.5s forwards;
+    animation: slideInRight 2s forwards;
 }
 
 .pagination button:nth-child(3) {
-    animation: slideInUp 1.5s forwards;
+    animation: slideInUp 2s forwards;
 }
 
 @keyframes slideInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px); /* Move to the left */
+        transform: translateX(-900px); /* Move to the left */
     }
     100% {
         opacity: 1;
@@ -126,7 +130,7 @@ body {
 @keyframes slideInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px); /* Move to the right */
+        transform: translateX(900px); /* Move to the right */
     }
     100% {
         opacity: 1;
@@ -137,7 +141,7 @@ body {
 @keyframes slideInUp {
     0% {
         opacity: 0;
-        transform: translateY(100px); /* Move downwards */
+        transform: translateY(900px); /* Move downwards */
     }
     100% {
         opacity: 1;
