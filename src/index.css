@@ -101,21 +101,21 @@ body {
 
 /* Additional animations for specific buttons */
 .pagination button:nth-child(1), .pagination button:nth-child(2) {
-    animation: slideInLeft 0.5s forwards;
+    animation: slideInLeft 1.5s forwards;
 }
 
 .pagination button:nth-child(4), .pagination button:nth-child(5) {
-    animation: slideInRight 0.5s forwards;
+    animation: slideInRight 1.5s forwards;
 }
 
 .pagination button:nth-child(3) {
-    animation: slideInUp 0.5s forwards;
+    animation: slideInUp 1.5s forwards;
 }
 
 @keyframes slideInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-50px); /* Move to the left */
+        transform: translateX(-100px); /* Move to the left */
     }
     100% {
         opacity: 1;
@@ -126,7 +126,7 @@ body {
 @keyframes slideInRight {
     0% {
         opacity: 0;
-        transform: translateX(50px); /* Move to the right */
+        transform: translateX(100px); /* Move to the right */
     }
     100% {
         opacity: 1;
@@ -137,7 +137,7 @@ body {
 @keyframes slideInUp {
     0% {
         opacity: 0;
-        transform: translateY(50px); /* Move downwards */
+        transform: translateY(100px); /* Move downwards */
     }
     100% {
         opacity: 1;

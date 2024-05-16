@@ -122,15 +122,16 @@ const PokemonList = () => {
                         </div>
                     )}
                     <div className="pagination">
-                        <p className={"page-number"}>{currentPage}</p>
+                        <p className={"page-number"}>{currentPage - 1}</p>
                         <div className={"page-buttons"}>
-                            <button onClick={prevPageTen} disabled={currentPage === 1}>Previous 10</button>
+                            <button onClick={prevPageTen} disabled={currentPage <= 10}>Previous 10</button>
                             <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
                             <button onClick={firstPage} disabled={currentPage === 1}>1st Page</button>
                             <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
                             <button onClick={nextPageTen} disabled={currentPage === totalPages}>Next 10</button>
                         </div>
                     </div>
+
                 </div>
             </div>
             {selectedPokemon && (
